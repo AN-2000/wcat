@@ -22,7 +22,10 @@ function wcat(cmds) {
 
   if (options.includes("-s")) {
     allText = allText.map((el, i) => {
-      if (el === "" && allText[i - 1] === "") {
+      if (
+        (el === "" && allText[i - 1] === "") ||
+        (el === "\r" && allText[i - 1] === "\r")
+      ) {
         return null;
       } else return el;
     });
@@ -53,7 +56,7 @@ wcat(cmds);
 function addNonEmptyNum(allText) {
   let lineNumber = 1;
   for (x in allText) {
-    if (allText[x] === "") {
+    if (allText[x] === '' || allText[x]==='\r') {
       allText[x] = allText[x];
     } else {
       allText[x] = lineNumber + " " + allText[x];
