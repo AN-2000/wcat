@@ -21,7 +21,7 @@ function wcat(cmds) {
   let files = cmds.filter((el) => !el.startsWith("-"));
 
   //4
-  //Check if all files required by user exists in the given directory if not stop execution and console file does not exist.
+  //Check if all files required by user exists in the given directory if not stop execution and print "file does not exist".
   for (x in files) {
     if (!fs.existsSync(files[x])) {
       console.log(files[x] + " does not exist");
@@ -58,7 +58,7 @@ function wcat(cmds) {
   }
 
   //8
-  //If this used to check precedence of 2 non-mutual exclusive options => -n and -b
+  //This used to check precedence of 2 non-mutual exclusive options => -n and -b
   if (options.includes("-n") && options.includes("-b")) {
     //10
     //if -n is entered before -b use it or vice versa
